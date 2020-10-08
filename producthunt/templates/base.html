@@ -29,6 +29,9 @@
         -ms-user-select: none;
         user-select: none;
       }
+      .mxw-4{
+        max-width: 300px;
+      }
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -50,8 +53,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="ml-auto navbar-nav">
-                <a class="nav-item nav-link" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">Twitter</a>
+                <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+                {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="javascript:{document.getElementById('logoutNavForm').submit()}">Logout</a>
+                <form id="logoutNavForm" method="POST" action="{% url 'logout' %}">{% csrf_token %}<input type="hidden"></form>
+                {% else %}
+                <a class="nav-item nav-link" href="{% url 'signup' %}">SignUp</a>
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                {% endif %}
             </ul>
         </div>
     </div>

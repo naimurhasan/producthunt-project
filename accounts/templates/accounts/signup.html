@@ -8,8 +8,8 @@
         {% endif %}
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Login</h5>
-              <form method="POST" action="{% url 'login' %}" class="mxw-4">
+              <h5 class="card-title">Create account</h5>
+              <form method="POST" action="{% url 'signup' %}" class="mxw-4">
                    {% csrf_token %}
                     <div class="form-group">
                         <label for="username">Username:</label>
@@ -17,9 +17,13 @@
                     </div>
                     <div class="form-group">
                         <label for="password1">Password:</label>
-                        <input class="form-control" name="password" id="input-password1" type="password">
+                        <input class="form-control" name="password1" id="input-password1" type="password">
                     </div>
-                    <input type="submit" value="Login" class="btn btn-primary" >             
+                    <div class="form-group">
+                        <label for="password2">Confirm Password:</label>
+                        <input class="form-control" name="password2" id="input-password2" type="password">
+                    </div>
+                    <input type="submit" value="Sign Up" class="btn btn-primary" >             
               </form>
             </div>
           </div>
